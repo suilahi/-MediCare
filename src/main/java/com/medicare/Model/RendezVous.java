@@ -5,23 +5,21 @@ import java.sql.Time;
 
 public class RendezVous {
     private int rendvId;
-    private Date appointmentDate;
+    private Date Date;
     private int patientId;
     private int doctorId;
-    private Date date;
     private Time time;
 
 
-    public RendezVous(int rendvId, Date appointmentDate, int patientId, int doctorId, Date date, Time time) {
+    public RendezVous(int rendvId, Date Date, int patientId, int doctorId, Time time) {
         this.rendvId = rendvId;
-        this.appointmentDate = appointmentDate;
+        this.Date = Date;
         this.patientId = patientId;
         this.doctorId = doctorId;
-        this.date = date;
         this.time = time;
     }
 
-    public RendezVous( int rendvId, Date appointmentDate, int patientId, int doctorId, Date date) {
+    public RendezVous( int rendvId, Date Date, int patientId, int doctorId) {
     }
 
     // Getters et Setters
@@ -32,10 +30,10 @@ public class RendezVous {
         this.rendvId = rendvId; }
 
     public Date getAppointmentDate() {
-        return appointmentDate; }
+        return Date; }
 
     public void setAppointmentDate(Date appointmentDate) {
-        this.appointmentDate = appointmentDate; }
+        this.Date = appointmentDate; }
 
     public int getPatientId() {
         return patientId; }
@@ -48,12 +46,6 @@ public class RendezVous {
 
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId; }
-
-    public Date getDate() {
-        return date; }
-
-    public void setDate(Date date) {
-        this.date = date; }
 
     public Time getTime() {
         return time; }

@@ -13,12 +13,11 @@ public class RendezVousDao {
     }
 
     public boolean createRendezVous(RendezVous rendezVous) {
-        String sql = "INSERT INTO Rendez_vous (Appoinment_Date, Patient_ID, Doctor_ID, date, time) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Rendez_vous (Appoinment_Date, Patient_ID, Doctor_ID, time) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setDate(1, rendezVous.getAppointmentDate());
             stmt.setInt(2, rendezVous.getPatientId());
             stmt.setInt(3, rendezVous.getDoctorId());
-            stmt.setDate(4, rendezVous.getDate());
             stmt.setTime(5, rendezVous.getTime());
 
             int rowsAffected = stmt.executeUpdate();
@@ -40,7 +39,6 @@ public class RendezVousDao {
                         rs.getDate("Appoinment_Date"),
                         rs.getInt("Patient_ID"),
                         rs.getInt("Doctor_ID"),
-                        rs.getDate("date"),
                         rs.getTime("time")
                 );
             }
@@ -62,7 +60,6 @@ public class RendezVousDao {
                         rs.getDate("Appoinment_Date"),
                         rs.getInt("Patient_ID"),
                         rs.getInt("Doctor_ID"),
-                        rs.getDate("date"),
                         rs.getTime("time")
                 ));
             }
@@ -78,7 +75,6 @@ public class RendezVousDao {
             stmt.setDate(1, rendezVous.getAppointmentDate());
             stmt.setInt(2, rendezVous.getPatientId());
             stmt.setInt(3, rendezVous.getDoctorId());
-            stmt.setDate(4, rendezVous.getDate());
             stmt.setTime(5, rendezVous.getTime());
             stmt.setInt(6, rendezVous.getRendvId());
 
