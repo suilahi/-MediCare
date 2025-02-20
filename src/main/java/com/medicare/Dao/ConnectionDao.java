@@ -1,16 +1,16 @@
 package com.medicare.Dao;
 
-import com.medicare.Dao.Rendez_vousDao;
+import com.medicare.Dao.ConnectionDao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rendez_vousDao {
+public class ConnectionDao {
     private String jdbcURL = "jdbc:mysql://localhost:3306/medicare?useSSL=false";
     private String jdbcUser = "root";
     private String jdbcPassword = "admin";
 
-    protected Connection connection(){
+    public Connection connection(){
         Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

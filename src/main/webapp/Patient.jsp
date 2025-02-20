@@ -13,7 +13,7 @@
 
 <div class="bg-white bg-opacity-20 p-6 rounded-lg shadow-lg w-full max-w-md">
     <h3 class="text-xl font-semibold mb-4">Prendre un rendez-vous</h3>
-    <form action="ReservationServlet" method="post" class="space-y-4">
+    <form action="Rendez_vousServlet" method="post" class="space-y-4">
         <div>
             <label for="username" class="block font-medium">Nom d'utilisateur :</label>
             <input type="text" id="username" name="username" required
@@ -59,7 +59,7 @@
 
 <div class="bg-white bg-opacity-20 p-6 rounded-lg shadow-lg w-full max-w-md mt-6">
     <h3 class="text-xl font-semibold mb-4">Consulter mes rendez-vous</h3>
-    <form action="ConsultationServlet" method="get" class="space-y-4">
+    <form action="PatientServlet" method="get" class="space-y-4">
         <div>
             <label for="search_username" class="block font-medium">Nom d'utilisateur :</label>
             <input type="text" id="search_username" name="username" required

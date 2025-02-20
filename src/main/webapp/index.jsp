@@ -1,89 +1,32 @@
-  <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-  <html>
-  <head>
-    <title>Rendez-vous Medecin</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DoctorRV - Accueil</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="flex flex-col items-center min-h-screen p-6 text-white bg-cover bg-center bg-no-repeat bg-opacity-50"
-        style="background-image: url('https://images.pexels.com/photos/6129042/pexels-photo-6129042.jpeg?auto=compress&cs=tinysrgb&h=1080&w=1920');">
+</head>
+<body class="flex flex-col items-center min-h-screen p-6 text-white bg-cover bg-center bg-no-repeat"
+      style="background-image: url('https://images.pexels.com/photos/6129042/pexels-photo-6129042.jpeg?auto=compress&cs=tinysrgb&h=1080&w=1920');">
 
-  <h2>Mes rendez-vous</h2>
+<h2 class="text-3xl font-bold mb-6">Bienvenue sur DoctorRV</h2>
 
-  <div class="bg-white bg-opacity-20 p-6 rounded-lg shadow-lg w-full max-w mb-6">
-    <h3 class="text-lg font-bold mb-4 ">Rendez-vous :</h3>
-    <table class="w-full table-auto">
-      <thead>
-      <tr>
-        <th class="text-black px-4 py-2 text-left">Nom d'utilisateur</th>
-        <th class="text-black px-4 py-2 text-left">Motif</th>
-        <th class="text-black px-4 py-2 text-left">Date</th>
-        <th class="text-black px-4 py-2 text-left">Heure</th>
-        <th class="text-black px-4 py-2 text-left">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
+<div class="bg-white bg-opacity-20 p-6 rounded-lg shadow-lg w-full max-w-md mb-6">
+    <h3 class="text-xl font-semibold mb-4">Réserver un rendez-vous</h3>
+    <p>Réservez votre prochain rendez-vous médical en quelques clics.</p>
+    <a href="Patient.jsp"
+       class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-md text-center block mt-4">
+        Prendre un rendez-vous
+    </a>
+</div>
 
-      <tr>
-        <td class="text-black px-4 py-2">John Doe</td>
-        <td class="text-black px-4 py-2">Consultation générale</td>
-        <td class="text-black px-4 py-2">2025-02-20</td>
-        <td class="text-black px-4 py-2">14:00</td>
-        <td class="px-4 py-2">
-          <!-- Alignement des boutons dans une seule ligne -->
-          <div class="flex space-x-2">
-            <!-- Formulaire pour Confirmer -->
-            <form action="/confirmerRendezvous" method="post" class="inline">
-              <input type="hidden" name="idRendezvous" value="1">
-              <button type="submit" class="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded-md">Confirmer</button>
-            </form>
-
-            <!-- Formulaire pour Annuler -->
-            <form action="/annulerRendezvous" method="post" class="inline">
-              <input type="hidden" name="idRendezvous" value="1">
-              <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md">Annuler</button>
-            </form>
-
-            <!-- Formulaire pour Reporter -->
-            <form action="/reporterRendezvous" method="post" class="inline">
-              <input type="hidden" name="idRendezvous" value="1">
-              <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded-md">Reporter</button>
-            </form>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="text-black px-4 py-2">Jane Smith</td>
-        <td class="text-black px-4 py-2">Vaccination</td>
-        <td class="text-black px-4 py-2">2025-02-21</td>
-        <td class="text-black px-4 py-2">10:30</td>
-        <td class="text-black px-4 py-2">
-          <!-- Alignement des boutons dans une seule ligne -->
-          <div class="flex space-x-2">
-            <!-- Formulaire pour Confirmer -->
-            <form action="/confirmerRendezvous" method="post" class="inline">
-              <input type="hidden" name="idRendezvous" value="2">
-              <button type="submit" class="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded-md">Confirmer</button>
-            </form>
-
-            <!-- Formulaire pour Annuler -->
-            <form action="/annulerRendezvous" method="post" class="inline">
-              <input type="hidden" name="idRendezvous" value="2">
-              <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md">Annuler</button>
-            </form>
-
-            <!-- Formulaire pour Reporter -->
-            <form action="/reporterRendezvous" method="post" class="inline">
-              <input type="hidden" name="idRendezvous" value="2">
-              <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded-md">Reporter</button>
-            </form>
-          </div>
-        </td>
-      </tr>
-
-      </tbody>
-    </table>
-  </div>
-
-  </body>
-  </html>
+<div class="bg-white bg-opacity-20 p-6 rounded-lg shadow-lg w-full max-w-md">
+    <h3 class="text-xl font-semibold mb-4">Consulter vos rendez-vous</h3>
+    <p>Vérifiez, confirmez, annulez ou reportez vos rendez-vous médicaux.</p>
+    <a href="Medecin.jsp"
+       class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded-md text-center block mt-4">
+        Consulter mes rendez-vous
+    </a>
+</div>
+</body>
+</html>
