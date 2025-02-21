@@ -1,9 +1,10 @@
 package com.medicare.web;
 
+import com.medicare.Dao.patientDao;
 import com.medicare.Model.RendezVous;
+import com.medicare.Model.patient;
+
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -19,32 +20,16 @@ public class RendezVousServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String rendvIdStr = request.getParameter("rendvId");
-            String patientIdStr = request.getParameter("patientId");
-            String doctorIdStr = request.getParameter("doctorId");
-            String dateStr = request.getParameter("date");
-            String timeStr = request.getParameter("time");
+        String action=request.getServletPath();
 
+        switch (action){
+            case "/RendezVousServlet":
+                insertPatient(request, response);
+                break;
+            default:
+                System.out.println("Erreur RendezVousServlet");
+                break;
 
-            if (rendvIdStr == null || patientIdStr == null || doctorIdStr == null || dateStr == null || timeStr == null ||
-                    rendvIdStr.isEmpty() || patientIdStr.isEmpty() || doctorIdStr.isEmpty() || dateStr.isEmpty() || timeStr.isEmpty()) {
-                response.getWriter().write("Erreur: Un ou plusieurs paramètres sont manquants ou vides.");
-                return;
-            }
-
-            int rendvId = Integer.parseInt(rendvIdStr);
-            int patientId = Integer.parseInt(patientIdStr);
-            int doctorId = Integer.parseInt(doctorIdStr);
-            Date date = Date.valueOf(dateStr);
-            Time time = Time.valueOf(timeStr);
-
-            RendezVous rendezVous = new RendezVous(rendvId, date, patientId, doctorId, time);
-            rendezVousList.add(rendezVous);
-
-            response.getWriter().write("Rendez-vous ajouté avec succès");
-        } catch (Exception e) {
-            response.getWriter().write("Erreur lors de l'ajout du rendez-vous: " + e.getMessage());
         }
     }
 
@@ -54,13 +39,43 @@ public class RendezVousServlet extends HttpServlet {
         StringBuilder responseText = new StringBuilder("<h2>Liste des Rendez-vous</h2><ul>");
         for (RendezVous rv : rendezVousList) {
             responseText.append("<li>ID: ").append(rv.getRendvId())
-                    .append(", Patient: ").append(rv.getPatientId())
-                    .append(", Docteur: ").append(rv.getDoctorId())
-                    .append(", Date: ").append(rv.getAppointmentDate())
-                    .append(", Heure: ").append(rv.getTime())
-                    .append("</li>");
+                        .append(", Patient: ").append(rv.getPatientId())
+                        .append(", Docteur: ").append(rv.getDoctorId())
+                        .append(", Date: ").append(rv.getAppointmentDate())
+                        .append(", Heure: ").append(rv.getTime())
+                        .append("</li>");
         }
         responseText.append("</ul>");
         response.getWriter().write(responseText.toString());
     }
+
+    private void insertPatient(HttpServletRequest request, HttpServletResponse response)
+              throws IOException {
+        try {
+
+            String username = request.getParameter("username");
+            String email = request.getParameter("email");
+            String telephone = request.getParameter("telephone");
+            String motif= request.getParameter("motif");
+            String dateStr = request.getParameter("date");
+            String timeStr = request.getParameter("heure");
+
+            if (username == null || email == null || telephone == null || dateStr == null || timeStr == null ||
+                    username.isEmpty() || email.isEmpty() || telephone.isEmpty() || dateStr.isEmpty() || timeStr.isEmpty()) {
+                response.getWriter().write("Erreur: Un ou plusieurs paramètres sont manquants ou vides.");
+                return;
+            }
+
+            patient patient=new patient(username,email,telephone,motif);
+            patientDao rendezVousDao=new patientDao();
+            rendezVousDao.createRendezVous(patient);
+
+
+            response.sendRedirect("/MediCare");
+        } catch (Exception e) {
+            response.getWriter().write("Erreur lors de l'ajout du rendez-vous: " + e.getMessage());
+        }
+    }
+
 }
+

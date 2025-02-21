@@ -11,6 +11,9 @@ public class RendezVousDao {
     public RendezVousDao(Connection connection) {
         this.connection = connection;
     }
+    public RendezVousDao(){
+
+    }
 
     public boolean createRendezVous(RendezVous rendezVous) {
         String sql = "INSERT INTO Rendez_vous (Appoinment_Date, Patient_ID, Doctor_ID, time) VALUES (?, ?, ?, ?)";
@@ -18,7 +21,7 @@ public class RendezVousDao {
             stmt.setDate(1, rendezVous.getAppointmentDate());
             stmt.setInt(2, rendezVous.getPatientId());
             stmt.setInt(3, rendezVous.getDoctorId());
-            stmt.setTime(5, rendezVous.getTime());
+            stmt.setTime(4, rendezVous.getTime());
 
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;

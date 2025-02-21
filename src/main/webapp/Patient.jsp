@@ -9,6 +9,9 @@
 <body class="flex flex-col items-center min-h-screen p-6 text-white bg-cover bg-center bg-no-repeat"
       style="background-image: url('https://images.pexels.com/photos/6129042/pexels-photo-6129042.jpeg?auto=compress&cs=tinysrgb&h=1080&w=1920');">
 
+<a href="index.jsp" class="fixed top-6 right-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
+    Retour à l'Accueil
+</a>
 <h2 class="text-3xl font-bold mb-6">Bienvenue sur DoctorRV</h2>
 
 <div class="bg-white bg-opacity-20 p-6 rounded-lg shadow-lg w-full max-w-md">

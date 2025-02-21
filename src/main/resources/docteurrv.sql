@@ -23,8 +23,7 @@ create table Rendez_vous (
                              Appoinment_Date DATE,
                              Patient_ID INT,
                              Doctor_ID INT ,
-                             date DATE NOT NULL,
                              time TIME NOT NULL,
                              foreign key (Patient_ID) references Patient(Patient_ID),
-foreign key (Doctor_ID) references Doctor(Doctor_ID)
+                             foreign key (Doctor_ID) references Doctor(Doctor_ID)
 );
